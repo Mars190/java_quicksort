@@ -1,14 +1,15 @@
 import java.util.Arrays;
 
 public class Quicksort {
-    public static void main(String[] args) {
-        int[] array = {2, 9, 3, 2, 0, 5, 2, 0, 8, 1};
+    public static int[] quicksort(int[] array) {
         System.out.printf("Array before quicksort: %s\n", Arrays.toString(array));
-        quicksort(array, 0, array.length - 1);
+        quicksortRecursive(array, 0, array.length - 1);
         System.out.printf("Array after quicksort: %s", Arrays.toString(array));
+
+        return array;
     }
 
-    private static void quicksort(int[] array, int start, int end) {
+    private static void quicksortRecursive(int[] array, int start, int end) {
         if (start >= end) {
             return;
         }
@@ -33,8 +34,8 @@ public class Quicksort {
 
         swap(i, end, array); // Pivot an seine endgültige Position bringen
 
-        quicksort(array, start, i - 1);
-        quicksort(array, i + 1, end);
+        quicksortRecursive(array, start, i - 1);
+        quicksortRecursive(array, i + 1, end);
     }
 
     private static void swap(int x, int y, int[] array) {
